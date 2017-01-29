@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Surprise me</title>
+    <title>SurprsieMe</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -32,8 +32,23 @@
                 $("#div2").fadeIn(2000);
             });
         });
+
     </script>
 
+    <script>
+        $('#button1').click(function(){
+
+            $.ajax({
+                    type:'POST',
+                    url:"/cgi-bin/justeat.py",
+                    async:asynchronous,
+                    dataType:json,
+                    success: function(data) {
+                        alert("Data Saved: " + data);
+            }
+        });
+        });
+    </script>
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
@@ -50,7 +65,7 @@
                     <p>div1</p>
                 </div>
                 <div id="div3">
-                    <button id = "button1" class="btn btn-default btn-lg">Surprise Me</button>
+                    <button id = "button1" class="btn btn-default btn-lg" onclick="loadDoc()">Surprise Me</button>
                 </div>
 
             </div>
