@@ -7,7 +7,7 @@ import json
 jsonArr=[]
 
 def repeat():
-	for x in range(0,5):
+	for x in range(0,100):
 		url="http://worldsfunniestjokes.club/top-50-funniest-jokes-in-the-world/"
 
 		subcontent = urllib.urlopen(url).read()
@@ -16,15 +16,16 @@ def repeat():
 
 		randomInt=randint(1,len(theBody)-1)
 		s=theBody[randomInt][3:]
-		
+		while "<" in s:
+		    randomInt = randint(1, len(theBody) - 1)
+		    s = theBody[randomInt][3:]
 		Joke={'joke':s}
 
 		print(json.dumps(Joke))
 
 		jsonArr.extend([json.dumps(Joke)])
-
-	return jsonArr
 		
+	return jsonArr
 
 repeat()
 Json = {'jokes': jsonArr}
