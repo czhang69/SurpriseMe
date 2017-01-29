@@ -26,8 +26,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
-
-
         function loadDoc() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -52,7 +50,6 @@
                                     document.getElementById("div1").innerHTML = "<p>Laugh out loudly!</p>";
                                     break;
                             }
-
                             document.getElementById("div2").innerHTML = "<p>"+JSON.parse(myArr.jokes[y]).joke+"</p>";
                             break;
                         case "books":
@@ -68,11 +65,9 @@
                                     document.getElementById("div1").innerHTML = "<p>Reading makes you smarter!</p>";
                                     break;
                             }
-
                             document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.books[y]).image + "\">" ;
                             document.getElementById("div3").innerHTML = "<p >" + JSON.parse(myArr.books[y]).description + "</p>";
                             document.getElementById("div4").innerHTML = "<a href=\'"+JSON.parse(myArr.books[y]).url+"\'>" + JSON.parse(myArr.books[y]).title +"</a>";
-
                             break;
                         case "musicInfo":
                             $("#div1").fadeIn(1000);
@@ -104,26 +99,30 @@
                                     document.getElementById("div3").innerHTML = "<img src = \"http://www.nudefoodmovers.com.au/wp-content/uploads/2014/10/fruit-group.png\">";
                                     break;
                             }
-                            document.getElementById("div2").innerHTML = "<p>"+JSON.parse(myArr.restaurant[y]).name+"</p>";
-
-                            document.getElementById("div4").innerHTML = "<a href=\'"+JSON.parse(myArr.restaurant[y]).website+    "\'>" + JSON.parse(myArr.restaurant[y]).address +"</a>";
+                            document.getElementById("div2").innerHTML = "<a style='font-size: 25px;' href=\'"+JSON.parse(myArr.restaurant[y]).website+ "\'>" + JSON.parse(myArr.restaurant[y]).name +"</a>";
+                            document.getElementById("div4").innerHTML =  "<p style='font-family:\"Adobe Caslon Pro\", \"Hoefler Text\", Georgia, Garamond, Times, serif;'>"+JSON.parse(myArr.restaurant[y]).address+"</p>";
                             break;
                         case "movie":
                             $("#div1").fadeIn(1000);
                             $("#div2").fadeIn(1500);
                             $("#div3").fadeIn(1700);
                             $("#div4").fadeIn(2000);
-                            document.getElementById("div1").innerHTML = "<p>Wanna read a book?</p>";
-                            document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.books[y]).movie + "\">" ;
-                            document.getElementById("div3").innerHTML = "<p >" + JSON.parse(myArr.books[y]).description + "</p>";
-                            document.getElementById("div4").innerHTML = "<a href=\'"+JSON.parse(myArr.books[y]).url+"\'>" + JSON.parse(myArr.books[y]).title +"</a>";
+                            switch(z){
+                                case 1:
+                                    document.getElementById("div1").innerHTML = "<p>Want a movie night?</p>";
+                                    break;
+                                case 2:
+                                    document.getElementById("div1").innerHTML = "<p>Enjoy with your friends!</p>";
+                                    break;
+                            }
+                            document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.movie[y]).image + "\">" ;
+                            document.getElementById("div3").innerHTML = "<p >" + JSON.parse(myArr.movie[y]).description + "</p>";
+                            document.getElementById("div4").innerHTML = "<a href=\'"+JSON.parse(myArr.movie[y]).url+"\'>" + JSON.parse(myArr.movie[y]).title +"</a>";
                             break;
                     }
-
                 }
             };
-
-            x = Math.floor((Math.random()*4)+1);
+            x = Math.floor((Math.random()*5)+1);
             var jsonFile;
             switch(x){
                 case 1:
@@ -143,7 +142,7 @@
                     xhttp.send();
                     break;
                 case 5:
-                    xhttp.open("GET", "jokes.json", true);
+                    xhttp.open("GET", "movie.json", true);
                     xhttp.send();
                     break;
             }
