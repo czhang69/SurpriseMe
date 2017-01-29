@@ -13,9 +13,6 @@ info = {"name":res[0].text}
 addr = res[0].parent.parent.find_all("p",itemprop="address")
 info["address"] = addr[0].text
 
-type = res[0].parent.parent.find_all("strong")
-info["type"] = type[0].text
-
 link = res[0].parent.parent.parent.parent.parent.parent.find_all("a",{'class':"mediaElement listing-item-link"})
 web = "https://www.just-eat.ca"+link[0]['href']
 info["website"] = web

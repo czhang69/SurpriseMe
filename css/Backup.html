@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SurprsieMe</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+
+
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myArr = JSON.parse(this.responseText);
+                    var y = Math.floor((Math.random()*5)+1);
+                    var name = Object.keys(myArr)[0];
+                    switch(name){
+                        case "jokes":
+                            $("#div1").fadeIn(1000);
+                            $("#div2").fadeIn(1000);
+                            document.getElementById("div1").innerHTML = "<p>Do you like this joke?</p>";
+                            document.getElementById("div2").innerHTML = "<p>"+JSON.parse(myArr.jokes[y]).joke+"</p>";
+                            break;
+                        case "books":
+                            $("#div1").fadeIn(1000);
+                            $("#div2").fadeIn(1000);
+                            $("#div3").fadeIn(1000);
+                            document.getElementById("div1").innerHTML = "<p>Wanna read a book?</p>";
+                            document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.books[y]).image + "\">" ;
+                            document.getElementById("div3").innerHTML = "<a href=\'"+JSON.parse(myArr.books[y]).url+"\'>" + JSON.parse(myArr.books[y]).title +"</a>";
+                            break;
+                        case "musicInfo":
+                            $("#div1").fadeIn(1000);
+                            $("#div2").fadeIn(1000);
+                            $("#div3").fadeIn(1000);
+                            document.getElementById("div1").innerHTML = "<p>Oh, let's break it down!</p>";
+                            document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.musicInfo[y]).image + "\">" ;
+                            document.getElementById("div3").innerHTML = "<a href=\'"+JSON.parse(myArr.musicInfo[y]).url+"\'>" + JSON.parse(myArr.musicInfo[y]).music +"</a>";
+                            break;
+                        case "resaurant":
+                            $("#div1").fadeIn(1000);
+                            $("#div2").fadeIn(1000);
+                            $("#div3").fadeIn(1000);
+                            document.getElementById("div1").innerHTML = "<p>Oh, let's break it down!</p>";
+                            document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.musicInfo[y]).image + "\">" ;
+                            document.getElementById("div3").innerHTML = "<a href=\'"+JSON.parse(myArr.musicInfo[y]).url+"\'>" + JSON.parse(myArr.musicInfo[y]).music +"</a>";
+                            break;
+                    }
+
+                }
+            };
+
+            x = Math.floor((Math.random()*3)+1);
+            var jsonFile;
+            switch(x){
+                case 1:
+                    xhttp.open("GET", "jokes.json", true);
+                    xhttp.send();
+                    break;
+                case 2:
+                    xhttp.open("GET", "music.json", true);
+                    xhttp.send();
+                    break;
+                case 3:
+                    xhttp.open("GET", "books.json", true);
+                    xhttp.send();
+                    break;
+                case 4:
+                    xhttp.open("GET", "jokes.json", true);
+                    xhttp.send();
+                    break;
+                case 5:
+                    xhttp.open("GET", "jokes.json", true);
+                    xhttp.send();
+                    break;
+                case 6:
+                    xhttp.open("GET", "jokes.json", true);
+                    xhttp.send();
+                    break;
+            }
+        }
+    </script>
+
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+
+<header class="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2 style = "font-size: 60pt;">Feel Bored?</h2>
+                <div id="div1" style = "display: none;">
+                    <p>div1</p>
+                </div>
+                <div id="div2" style = "display: none;">
+                    <p>div1</p>
+                </div>
+                <div id="div3" style = "display: none; margin-top: 5%; margin-bottom: 5%; font-size: 20pt;">
+                    <p>div1</p>
+                </div>
+                <div id="div4" style = "display: none; margin-top: 5%; margin-bottom: 5%; font-size: 20pt;">
+                    <p>div1</p>
+                </div>
+                <div id="div5" style = "display: none;">
+                    <p>div1</p>
+                </div>
+                <div id="div6">
+                    <button id = "button1" class="btn btn-default btn-lg" onclick="loadDoc()">Surprise Me</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</header>
+
+
+</body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SurprsieMe</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+
+
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myArr = JSON.parse(this.responseText);
+                    var y = Math.floor((Math.random()*5));
+                    var name = Object.keys(myArr)[0];
+                    $("#div1").hide();
+                    $("#div2").hide();
+                    $("#div3").hide();
+                    $("#div4").hide();
+                    switch(name){
+                        case "jokes":
+                            $("#div1").fadeIn(1000);
+                            $("#div2").fadeIn(1000);
+                            document.getElementById("div1").innerHTML = "<p>Do you like this joke?</p>";
+                            document.getElementById("div2").innerHTML = "<p>"+JSON.parse(myArr.jokes[y]).joke+"</p>";
+                            break;
+                        case "books":
+                            $("#div1").fadeIn(1000);
+                            $("#div2").fadeIn(1000);
+                            $("#div3").fadeIn(1000);
+                            $("#div4").fadeIn(1000);
+                            document.getElementById("div1").innerHTML = "<p>Wanna read a book?</p>";
+                            document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.books[y]).image + "\">" ;
+                            document.getElementById("div3").innerHTML = "<p >" + JSON.parse(myArr.books[y]).description + "</p>";
+                            document.getElementById("div4").innerHTML = "<a href=\'"+JSON.parse(myArr.books[y]).url+"\'>" + JSON.parse(myArr.books[y]).title +"</a>";
+
+                            break;
+                        case "musicInfo":
+                            $("#div1").fadeIn(1000);
+                            $("#div2").fadeIn(1000);
+                            $("#div3").fadeIn(1000);
+                            document.getElementById("div1").innerHTML = "<p>Oh, let's break it down!</p>";
+                            document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.musicInfo[y]).image + "\">" ;
+                            document.getElementById("div3").innerHTML = "<a href=\'"+JSON.parse(myArr.musicInfo[y]).url+"\'>" + JSON.parse(myArr.musicInfo[y]).music +"</a>";
+                            break;
+                        case "restaurant":
+                            $("#div1").fadeIn(1000);
+                            $("#div2").fadeIn(1000);
+                            $("#div3").fadeIn(1000);
+                            $("#div4").fadeIn(1000);
+                            document.getElementById("div1").innerHTML = "<p>Why don't you eat something?</p>";
+                            document.getElementById("div2").innerHTML = "<p>"+JSON.parse(myArr.restaurant[y]).name+"</p>";
+                            document.getElementById("div3").innerHTML = "<img src = \"https://img0.etsystatic.com/054/0/9684337/il_570xN.726795730_km9q.jpg\">";
+                            document.getElementById("div4").innerHTML = "<a href=\'"+JSON.parse(myArr.restaurant[y]).website+    "\'>" + JSON.parse(myArr.restaurant[y]).address +"</a>";
+                            break;
+                        case "movie":
+                            $("#div1").fadeIn(1000);
+                            $("#div2").fadeIn(1000);
+                            $("#div3").fadeIn(1000);
+                            $("#div4").fadeIn(1000);
+                            document.getElementById("div1").innerHTML = "<p>Wanna read a book?</p>";
+                            document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.books[y]).movie + "\">" ;
+                            document.getElementById("div3").innerHTML = "<p >" + JSON.parse(myArr.books[y]).description + "</p>";
+                            document.getElementById("div4").innerHTML = "<a href=\'"+JSON.parse(myArr.books[y]).url+"\'>" + JSON.parse(myArr.books[y]).title +"</a>";
+                            break;
+                    }
+
+                }
+            };
+
+            x = Math.floor((Math.random()*4)+1);
+            var jsonFile;
+            switch(x){
+                case 1:
+                    xhttp.open("GET", "books.json", true);
+                    xhttp.send();
+                    break;
+                case 2:
+                    xhttp.open("GET", "music.json", true);
+                    xhttp.send();
+                    break;
+                case 3:
+                    xhttp.open("GET", "restaurant.json", true);
+                    xhttp.send();
+                    break;
+                case 4:
+                    xhttp.open("GET", "jokes.json", true);
+                    xhttp.send();
+                    break;
+                case 5:
+                    xhttp.open("GET", "jokes.json", true);
+                    xhttp.send();
+                    break;
+                case 6:
+                    xhttp.open("GET", "jokes.json", true);
+                    xhttp.send();
+                    break;
+            }
+        }
+    </script>
