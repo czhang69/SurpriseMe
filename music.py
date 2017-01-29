@@ -13,10 +13,8 @@ suburl=temp[randomNum].find('a')['href']
 
 index = int(temp1.index('title - Duration'))
 music = temp1[0:index]
-print (music)
 
 url = 'https://www.youtube.com' + suburl
-print (url)
 
 source1 = urllib.request.urlopen(url).read()
 soup1=BeautifulSoup(source1,'html.parser')
@@ -24,7 +22,6 @@ views = soup1.find_all('div',{'class': 'watch-view-count'})
 
 v=str(views)
 numOfViews = v[31:-13]
-print(numOfViews)
 
 image = "https://lh3.googleusercontent.com/-E-jAfuwURMbYgvRhS8xLL8p280U9ueeC-IDrJOFmxGZpBJCWOY4jTbOKK1DZkPIFAUu=w300"
 
