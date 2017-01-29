@@ -33,7 +33,8 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     myArr = JSON.parse(this.responseText);
-                    var y = Math.floor((Math.random()*5));
+                    var y = Math.floor((Math.random()*50));
+                    var z = Math.floor((Math.random()*2)+1);
                     var name = Object.keys(myArr)[0];
                     $("#div1").hide();
                     $("#div2").hide();
@@ -43,7 +44,15 @@
                         case "jokes":
                             $("#div1").fadeIn(1000);
                             $("#div2").fadeIn(1000);
-                            document.getElementById("div1").innerHTML = "<p>Do you like this joke?</p>";
+                            switch(z){
+                                case 1:
+                                    document.getElementById("div1").innerHTML = "<p>Do you like this joke?</p>";
+                                    break;
+                                case 2:
+                                    document.getElementById("div1").innerHTML = "<p>Laugh out loudly!</p>";
+                                    break;
+                            }
+
                             document.getElementById("div2").innerHTML = "<p>"+JSON.parse(myArr.jokes[y]).joke+"</p>";
                             break;
                         case "books":
@@ -51,7 +60,15 @@
                             $("#div2").fadeIn(1000);
                             $("#div3").fadeIn(1000);
                             $("#div4").fadeIn(1000);
-                            document.getElementById("div1").innerHTML = "<p>Wanna read a book?</p>";
+                            switch(z){
+                                case 1:
+                                    document.getElementById("div1").innerHTML = "<p>Wanna read a book?</p>";
+                                    break;
+                                case 2:
+                                    document.getElementById("div1").innerHTML = "<p>Reading makes you smarter!</p>";
+                                    break;
+                            }
+
                             document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.books[y]).image + "\">" ;
                             document.getElementById("div3").innerHTML = "<p >" + JSON.parse(myArr.books[y]).description + "</p>";
                             document.getElementById("div4").innerHTML = "<a href=\'"+JSON.parse(myArr.books[y]).url+"\'>" + JSON.parse(myArr.books[y]).title +"</a>";
@@ -61,7 +78,14 @@
                             $("#div1").fadeIn(1000);
                             $("#div2").fadeIn(1000);
                             $("#div3").fadeIn(1000);
-                            document.getElementById("div1").innerHTML = "<p>Oh, let's break it down!</p>";
+                            switch(z){
+                                case 1:
+                                    document.getElementById("div1").innerHTML = "<p>Oh, let's break it down!</p>";
+                                    break;
+                                case 2:
+                                    document.getElementById("div1").innerHTML = "<p>Let's drop the beat!</p>";
+                                    break;
+                            }
                             document.getElementById("div2").innerHTML = "<img src=\" " + JSON.parse(myArr.musicInfo[y]).image + "\">" ;
                             document.getElementById("div3").innerHTML = "<a href=\'"+JSON.parse(myArr.musicInfo[y]).url+"\'>" + JSON.parse(myArr.musicInfo[y]).music +"</a>";
                             break;
@@ -70,9 +94,18 @@
                             $("#div2").fadeIn(1000);
                             $("#div3").fadeIn(1000);
                             $("#div4").fadeIn(1000);
-                            document.getElementById("div1").innerHTML = "<p>Why don't you eat something?</p>";
+                            switch(z){
+                                case 1:
+                                    document.getElementById("div1").innerHTML = "<p>Why don't you eat something?</p>";
+                                    document.getElementById("div3").innerHTML = "<img src = \"https://img0.etsystatic.com/054/0/9684337/il_570xN.726795730_km9q.jpg\">";
+                                    break;
+                                case 2:
+                                    document.getElementById("div1").innerHTML = "<p>You must be hungry, aren't you?</p>";
+                                    document.getElementById("div3").innerHTML = "<img src = \"http://www.nudefoodmovers.com.au/wp-content/uploads/2014/10/fruit-group.png\">";
+                                    break;
+                            }
                             document.getElementById("div2").innerHTML = "<p>"+JSON.parse(myArr.restaurant[y]).name+"</p>";
-                            document.getElementById("div3").innerHTML = "<img src = \"https://img0.etsystatic.com/054/0/9684337/il_570xN.726795730_km9q.jpg\">";
+
                             document.getElementById("div4").innerHTML = "<a href=\'"+JSON.parse(myArr.restaurant[y]).website+    "\'>" + JSON.parse(myArr.restaurant[y]).address +"</a>";
                             break;
                         case "movie":
@@ -110,10 +143,6 @@
                     xhttp.send();
                     break;
                 case 5:
-                    xhttp.open("GET", "jokes.json", true);
-                    xhttp.send();
-                    break;
-                case 6:
                     xhttp.open("GET", "jokes.json", true);
                     xhttp.send();
                     break;
