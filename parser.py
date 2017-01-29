@@ -11,7 +11,7 @@ category = ['art', 'biography', 'business', 'chick-lit', 'children-s', 'christia
 
 jsonArr=[]
 def repeat():
-	for x in range(0,5):
+	for x in range(0,100):
 		url = "https://www.goodreads.com/genres/" + random.choice(category)
 
 		source = urllib.urlopen(url).read()
@@ -35,7 +35,11 @@ def repeat():
 			if bookId.get('data-text-id') != None:
 				break
 
-		bookId = "freeTextContainer" + bookId.get('data-text-id').encode('ascii', 'ignore')
+		obj = bookId.get('data-text-id')
+		if obj is None:
+			continue
+		else:
+			bookId = "freeTextContainer" + obj.encode('ascii', 'ignore')
 
 		description = subSoup.findAll('span', {'id': bookId})[0].text
 
@@ -57,6 +61,14 @@ f = open('books.json', 'a')
 f.write(json.dumps(Json))
 f.write('\n')
 f.close
+
+
+
+
+
+
+
+
 
 
 
